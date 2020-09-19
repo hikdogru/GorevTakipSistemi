@@ -387,17 +387,17 @@
                                                 <span class="pcoded-mtext">İşlemler</span>
                                             </a>
                                             <ul class="pcoded-submenu">
+                                                
+                                                <asp:ListView runat="server" id="lvUrl">
+                                                    <ItemTemplate>
                                                 <li class="pcoded-hasmenu">
-                                                    <a href="/<%= Session["KullaniciTur"].ToString() %>/<%= Session["KullaniciTur"].ToString() %>Gorev.aspx" class="waves-effect waves-dark">
-                                                        <span class="pcoded-mtext">Görev</span>
+                                                    <a href="<%#Eval("TanimUrl") %>" class="waves-effect waves-dark">
+                                                        <span class="pcoded-mtext"><%#Eval("TanimAdi") %></span>
                                                     </a>
                                                 </li>
-
-                                                <li class="pcoded-hasmenu">
-                                                    <a href="/<%= Session["KullaniciTur"].ToString() %>/<%= Session["KullaniciTur"].ToString() %>Toplanti.aspx" class="waves-effect waves-dark">
-                                                        <span class="pcoded-mtext">Toplantı</span>
-                                                    </a>
-                                                </li>
+                                                    </ItemTemplate>
+                                                </asp:ListView>
+                                                
                                             </ul>
                                         </li>
                                     </ul>

@@ -21,6 +21,7 @@ namespace GorevYonetimSistemi.Proje.Admin
         IslemlerDal<KullaniciTur> _kullaniciTurDal = new IslemlerDal<KullaniciTur>();
         IslemlerDal<KullaniciTurAtama> _kullaniciTurAtamaDal = new IslemlerDal<KullaniciTurAtama>();
         MetotDal _metotDal=new MetotDal();
+        SessionKontrol _sessionKontrol=new SessionKontrol();
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
@@ -32,6 +33,15 @@ namespace GorevYonetimSistemi.Proje.Admin
                 UnvanListele();
                 IdariGorevUnvanListele();
                 KullaniciTurListele();
+
+                IdariGorevUnvanListele();
+                int kullaniciTurId = Convert.ToInt32(Session["KullaniciTurId"]);
+                string url = HttpContext.Current.Request.Url.AbsolutePath;
+                var kontrolUrl = _sessionKontrol.SessionKontrolu(kullaniciTurId, url);
+                if (kontrolUrl != url)
+                {
+                    Response.Redirect(kontrolUrl);
+                }
             }
 
         }

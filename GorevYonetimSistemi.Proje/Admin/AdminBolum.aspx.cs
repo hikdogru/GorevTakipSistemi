@@ -13,12 +13,22 @@ namespace GorevYonetimSistemi.Proje.Admin
     {
         IslemlerDal<Bolum> _bolumDal = new IslemlerDal<Bolum>();
         IslemlerDal<Okul> _okulDal = new IslemlerDal<Okul>();
+        SessionKontrol _sessionKontrol=new SessionKontrol();
         protected void Page_Load(object sender, EventArgs e)
         {
             if (!IsPostBack)
             {
                 BolumListele();
                 OkulListele();
+
+                int kullaniciTurId = Convert.ToInt32(Session["KullaniciTurId"]);
+                string url = HttpContext.Current.Request.Url.AbsolutePath;
+                var kontrolUrl = _sessionKontrol.SessionKontrolu(kullaniciTurId, url);
+                if (kontrolUrl != url)
+                {
+                    Response.Redirect(kontrolUrl);
+                }
+
             }
 
         }

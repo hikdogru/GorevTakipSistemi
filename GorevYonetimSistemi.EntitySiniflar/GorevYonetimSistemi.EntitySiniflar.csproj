@@ -69,6 +69,7 @@
     <Compile Include="obj\Release\.NETFramework,Version=v4.7.2.AssemblyAttributes.cs" />
     <Compile Include="Okul.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Tanim.cs" />
     <Compile Include="Toplanti.cs" />
     <Compile Include="ToplantiAtama.cs" />
     <Compile Include="ToplantiAtamaModel.cs" />

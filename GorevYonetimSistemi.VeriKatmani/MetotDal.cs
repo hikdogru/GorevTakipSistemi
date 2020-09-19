@@ -68,7 +68,8 @@ namespace GorevYonetimSistemi.VeriKatmani
             {
                 SqlParameter parameter1 = new SqlParameter("@KisiId", kisiId);
 
-                var kisiToplantiListe = context.Database.SqlQuery<ToplantiModel>("KisiToplantiListe @kisiId", parameter1)
+                var kisiToplantiListe = context.Database
+                    .SqlQuery<ToplantiModel>("KisiToplantiListe @kisiId", parameter1)
                     .OrderByDescending(p => p.SonTarihSaat).Take(5);
 
                 return kisiToplantiListe.ToList();
@@ -96,6 +97,16 @@ namespace GorevYonetimSistemi.VeriKatmani
 
                 return kullaniciListe;
             }
+        }
+
+        public List<Tanim> TanimlariListele(int kullaniciTurId)
+        {
+            using (EntityContext context = new EntityContext())
+            {
+                var tanimListe = context.Tanimlar.Where(p => p.FkKullaniciTurId == kullaniciTurId).ToList();
+                return tanimListe;
+            }
+            
         }
 
         public List<BildirimAtamaModel> BildirimDetay(int kisiId, int bildirimId)

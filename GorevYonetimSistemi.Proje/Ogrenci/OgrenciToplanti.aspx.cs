@@ -13,7 +13,7 @@ namespace GorevYonetimSistemi.Proje.Ogrenci
         private SessionKontrol _sessionKontrol = new SessionKontrol();
         protected void Page_Load(object sender, EventArgs e)
         {
-            if (!Page.IsPostBack)
+            if (!IsPostBack)
             {
                 int kullaniciTurId = Convert.ToInt32(Session["KullaniciTurId"]);
                 string url = HttpContext.Current.Request.Url.AbsolutePath;

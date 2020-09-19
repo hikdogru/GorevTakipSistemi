@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using GorevYonetimSistemi.EntitySiniflar;
 using GorevYonetimSistemi.VeriKatmani;
 
 namespace GorevYonetimSistemi.Proje.Site
@@ -23,7 +24,20 @@ namespace GorevYonetimSistemi.Proje.Site
             {
                 KullaniciBildirimListe(kisiId);
                 ToplantilariListele(kisiId);
+                TanimlariListele();
             }
+
+        }
+
+        private void TanimlariListele()
+        {
+            var kullaniciTurId = Session["KullaniciTurId"];
+
+            var tanimlarListe = _metotDal.TanimlariListele(Convert.ToInt32(kullaniciTurId));
+            lvUrl.DataSource = tanimlarListe;
+            lvUrl.DataBind();
+
+            
 
         }
 

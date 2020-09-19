@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site/Page.Master" AutoEventWireup="true" ClientIDMode="Static" CodeBehind="Unvanlar.aspx.cs" Inherits="GorevYonetimSistemi.Proje.Admin.Unvanlar" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site/Page.Master" AutoEventWireup="true" ClientIDMode="Static" CodeBehind="AdminAnaBilimDallar.aspx.cs" Inherits="GorevYonetimSistemi.Proje.Admin.AnaBilimDallar" %>
 
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <link rel="stylesheet" type="text/css" href="/Site/css/datatables.bootstrap4.min.css">
@@ -17,8 +17,8 @@
                             <div class="col-sm-4">
                                 <input type="hidden"
                                     class="form-control"
-                                    name="unvanId"
-                                    id="unvanId" runat="server" />
+                                    name="anaBilimDalId"
+                                    id="anaBilimDalId" runat="server" />
                                 <span class="messages"></span>
                             </div>
                         </div>
@@ -30,8 +30,8 @@
                             <div class="col-sm-4">
                                 <input type="text"
                                     class="form-control"
-                                    name="unvanAdi"
-                                    id="unvanAdi" runat="server" />
+                                    name="anaBilimDalAd"
+                                    id="anaBilimDalAd" runat="server" />
                                 <span class="messages"></span>
                             </div>
                         </div>
@@ -42,25 +42,25 @@
                         <div class="form-group row text-center ml-5">
 
 
-                            
+
                             <div class="col-sm-6">
                                 <button type="button"
-                                    class="btn btn-primary m-b-0" runat="server" id="btnUnvanKaydet" OnServerClick="btnUnvanKaydet_OnServerClick">
+                                    class="btn btn-primary m-b-0" runat="server" id="btnAbdKaydet" onserverclick="btnAbdKaydet_OnServerClick">
                                     Kaydet
                                 </button>
-                                <button type="button" class="btn waves-effect waves-light btn-danger btn-square" runat="server" id="btnUnvanSil" OnServerClick="btnUnvanSil_OnServerClick">
+                                <button type="button" class="btn waves-effect waves-light btn-danger btn-square" runat="server" id="btnAbdSil" onserverclick="btnAbdSil_OnServerClick">
                                     Sil
                                 </button>
-                                <button class="btn waves-effect waves-light btn-warning btn-square" type="button" runat="server" id="btnUnvanGuncelle" OnServerClick="btnUnvanGuncelle_OnServerClick">
+                                <button class="btn waves-effect waves-light btn-warning btn-square" type="button" runat="server" id="btnAbdGuncelle" onserverclick="btnAbdGuncelle_OnServerClick">
                                     Güncelle
                                 </button>
-                                <button type="button" id="toplantiTemizle" class="btn waves-effect waves-light btn-secondary btn-square" onclick="UnvanTemizle()">
+                                <button type="button" id="toplantiTemizle" class="btn waves-effect waves-light btn-secondary btn-square" onclick="AbdTemizle()">
                                     Temizle
                                 </button>
-                                
+
                             </div>
                             <label class="col-sm-2 badge badge-success" id="lblSonuc" runat="server" visible="False"></label>
-                            
+
                         </div>
                     </div>
                 </div>
@@ -75,18 +75,20 @@
                             class="table table-striped table-bordered nowrap" style="width: 100%;">
                             <thead>
                                 <tr>
-                                    <th hidden>Unvan Id</th>
-                                    <th>Unvan</th>
+                                    <th hidden>Ana Bilim Dal Id</th>
+                                    <th>Ana Bilim Dal</th>
 
                                 </tr>
                             </thead>
                             <tbody>
-                                <asp:ListView runat="server" ID="lvUnvanlar">
+                                <asp:ListView runat="server" ID="lvAbd">
                                     <ItemTemplate>
                                         <tr>
-                                            <td hidden><%#Eval("UnvanId") %></td>
-                                            <td><%#Eval("UnvanAd") %></td>
+                                            <td hidden><%#Eval("AbdId") %></td>
+                                            <td><%#Eval("AbdAd") %></td>
                                         </tr>
+
+
                                     </ItemTemplate>
                                 </asp:ListView>
                             </tbody>
@@ -98,6 +100,7 @@
     </div>
 </asp:Content>
 <asp:Content ID="Content3" ContentPlaceHolderID="script" runat="server">
+
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script>
         $(document).ready(function () {
@@ -108,25 +111,36 @@
                     return $(this).text();
                 }).get();
 
-                $("#unvanId").val(rowData[0]);
-                $("#unvanAdi").val(rowData[1]);
+                $("#anaBilimDalId").val(rowData[0]);
+                $("#anaBilimDalAd").val(rowData[1]);
 
-                console.log(rowData);
             });
         });
 
-        var UnvanTemizle = function () {
-            $("#unvanId").val("");
-            $("#unvanAdi").val("");
+        var AbdTemizle = function () {
+            $("#anaBilimDalId").val("");
+            $("#anaBilimDalAd").val("");
 
         };
 
         window.onload = function () {
             var seconds = 5;
             setTimeout(function () {
-                    document.getElementById("<%=lblSonuc.ClientID %>").style.display = "none";
-                },
+                document.getElementById("<%=lblSonuc.ClientID %>").style.display = "none";
+            },
                 seconds * 1000);
         }
+
+
+        //var btn = document.querySelector('.btn');
+
+        //btn.addEventListener('click', function () {
+        //    AbdTemizle1();
+        //});
+
+        //function AbdTemizle1(parameters) {
+        //    document.getElementById('anaBilimDalId').val('');
+        //    document.getElementById('anaBilimDalAd').val('');
+        //}
     </script>
 </asp:Content>

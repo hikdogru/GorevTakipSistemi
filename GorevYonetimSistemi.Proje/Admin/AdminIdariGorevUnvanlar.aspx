@@ -1,4 +1,4 @@
-﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site/Page.Master" AutoEventWireup="true" ClientIDMode="Static" CodeBehind="IdariGorevUnvanlar.aspx.cs" Inherits="GorevYonetimSistemi.Proje.Admin.IdariGorevUnvanlar" %>
+﻿<%@ Page Title="" Language="C#" MasterPageFile="~/Site/Page.Master" AutoEventWireup="true" ClientIDMode="Static" CodeBehind="AdminIdariGorevUnvanlar.aspx.cs" Inherits="GorevYonetimSistemi.Proje.Admin.IdariGorevUnvanlar" %>
 <asp:Content ID="Content1" ContentPlaceHolderID="head" runat="server">
     <link rel="stylesheet" type="text/css" href="/Site/css/datatables.bootstrap4.min.css">
     <link rel="stylesheet" type="text/css" href="/Site/css/buttons.datatables.min.css">

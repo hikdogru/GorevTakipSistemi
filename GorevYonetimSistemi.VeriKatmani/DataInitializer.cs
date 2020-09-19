@@ -13,8 +13,6 @@ namespace GorevYonetimSistemi.VeriKatmani
     {
         protected override void Seed(EntityContext context)
         {
-            
-
             List<AnaBilimDal> anaBilimDallar=new List<AnaBilimDal>()
             {
                 new AnaBilimDal(){AbdAd = "Bilgisayar Bilimi"},
@@ -176,6 +174,33 @@ namespace GorevYonetimSistemi.VeriKatmani
             }
 
             context.SaveChanges();
+
+            List<Tanim> tanimlar = new List<Tanim>()
+            {
+                new Tanim() {FkKullaniciTurId = 1, TanimUrl = "/Admin/AdminBolum.aspx",TanimAdi ="Bölüm"},
+                new Tanim() {FkKullaniciTurId = 1, TanimUrl = "/Admin/AdminGorev.aspx",TanimAdi ="Görev"},
+                new Tanim() {FkKullaniciTurId = 1, TanimUrl = "/Admin/AdminKullaniciKayit.aspx",TanimAdi ="Kullanıcı Kayıt"},
+                new Tanim() {FkKullaniciTurId = 1, TanimUrl = "/Admin/AdminOkul.aspx",TanimAdi ="Okul"},
+                new Tanim() {FkKullaniciTurId = 1, TanimUrl = "/Admin/AdminToplanti.aspx",TanimAdi ="Toplantı"},
+                new Tanim() {FkKullaniciTurId = 1, TanimUrl = "/Admin/AdminTurAtama.aspx",TanimAdi ="Tür Atama"},
+                new Tanim() {FkKullaniciTurId = 1, TanimUrl = "/Admin/AdminAnaBilimDallar.aspx",TanimAdi ="Bilim Dallar"},
+                new Tanim() {FkKullaniciTurId = 1, TanimUrl = "/Admin/AdminIdariGorevUnvanlar.aspx",TanimAdi ="İdari Görev Ünvanlar"},
+                new Tanim() {FkKullaniciTurId = 1, TanimUrl = "/Admin/AdminUnvanlar.aspx",TanimAdi ="Ünvanlar"},
+
+                new Tanim() {FkKullaniciTurId = 2, TanimUrl = "/Personel/PersonelGorev.aspx",TanimAdi ="Görev"},
+                new Tanim() {FkKullaniciTurId = 2, TanimUrl = "/Personel/PersonelToplanti.aspx",TanimAdi ="Toplantı"},
+
+                new Tanim() {FkKullaniciTurId = 3, TanimUrl = "/Ogrenci/OgrenciGorev.aspx",TanimAdi ="Görev"},
+                new Tanim() {FkKullaniciTurId = 3, TanimUrl = "/Ogrenci/OgrenciToplanti.aspx",TanimAdi ="Toplantı"},
+            };
+
+            foreach (var tanim in tanimlar)
+            {
+                context.Tanimlar.Add(tanim);
+            }
+
+            context.SaveChanges();
+
 
             List<KullaniciTurAtama> kullaniciTurAtamalar = new List<KullaniciTurAtama>()
             {
